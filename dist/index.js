@@ -98,7 +98,7 @@ const utils_1 = __webpack_require__(82);
 function issueCommand(command, message) {
     const filePath = process.env[`GITHUB_${command}`];
     if (!filePath) {
-        throw new Error(`Unable to find environment variable for file command ${command}`);
+        throw new Error(`Unable to find environment variable for file command ${comcmand}`);
     }
     if (!fs.existsSync(filePath)) {
         throw new Error(`Missing file at path: ${filePath}`);
@@ -131,11 +131,11 @@ try {
     let base_url = `https://github.com/apple/foundationdb/releases/download/${version}`;
     switch (os.platform()) {
         case 'linux': {
-            let client_url = `${base_url}/ubuntu/installers/foundationdb-clients_${version}-1_amd64.deb`;
+            let client_url = `${base_url}/foundationdb-clients_${version}-1_amd64.deb`;
             exec(`curl -O ${client_url}`);
             exec(`sudo dpkg -i foundationdb-clients_${version}-1_amd64.deb`);
 
-            let server_url = `${base_url}/ubuntu/installers/foundationdb-server_${version}-1_amd64.deb`;
+            let server_url = `${base_url}/foundationdb-server_${version}-1_amd64.deb`;
             exec(`curl -O ${server_url}`);
             exec(`sudo dpkg -i foundationdb-server_${version}-1_amd64.deb`);
             break;
